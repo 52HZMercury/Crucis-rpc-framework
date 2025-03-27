@@ -20,11 +20,11 @@ import java.util.List;
  */
 @Slf4j
 public class ZkServiceDiscoveryImpl implements ServiceDiscovery {
-    private final LoadBalance loadBalance;
+//    private final LoadBalance loadBalance;
 
-    public ZkServiceDiscoveryImpl() {
-        this.loadBalance = ExtensionLoader.getExtensionLoader(LoadBalance.class).getExtension("loadBalance");
-    }
+//    public ZkServiceDiscoveryImpl() {
+//        this.loadBalance = ExtensionLoader.getExtensionLoader(LoadBalance.class).getExtension("loadBalance");
+//    }
 
     @Override
     public InetSocketAddress lookupService(RpcRequest rpcRequest) {
