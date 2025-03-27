@@ -30,11 +30,11 @@ public class ProtostuffSerializer implements Serializer {
         return bytes;
     }
 
-    @Override
-    public <T> T deserialize(byte[] bytes, Class<T> clazz) {
-        Schema<T> schema = RuntimeSchema.getSchema(clazz);
-        T obj = schema.newMessage();
-        ProtostuffIOUtil.mergeFrom(bytes, obj, schema);
-        return obj;
-    }
+//    @Override
+//    public <T> T deserialize(byte[] bytes, Class<T> clazz) {
+//        Schema<T> schema = RuntimeSchema.getSchema(clazz);
+//        T obj = schema.newMessage();
+//        ProtostuffIOUtil.mergeFrom(bytes, obj, schema);
+//        return obj;
+//    }
 }
