@@ -1,37 +1,29 @@
 # simple-rpc-framework
 
+## Preface
 
-## 前言
+Currently, only the most basic functions of the RPC framework have been implemented.
 
-目前只实现了 RPC 框架最基本的功能
+## Introduction
 
-## 介绍
+It is an RPC framework implemented based on Netty + Kyro + Zookeeper.
 
-是一款基于 Netty+Kyro+Zookeeper 实现的 RPC 框架。
+### Architecture of this RPC Project
 
+The following diagram illustrates the structure of this framework:
 
-### 该RPC项目的结构
+[//]: # (![]&#40;./images/rpc-architure.png&#41;)
 
-该框架使用示意图如下图所示：
+The Server (service provider) registers services with the registry center. The Client (service consumer) retrieves service-related information from the registry center and then makes a network request to the Server.
 
-![](./images/rpc-architure.png)
+[//]: # (![]&#40;./images/rpc-architure-detail.png&#41;)
 
-服务提供端 Server 向注册中心注册服务，服务消费者 Client 通过注册中心拿到服务相关信息，然后再通过网络请求服务提供端 Server。
+### Basic Information about the Project
 
-
-![](./images/rpc-architure-detail.png)
-
-
-### 项目基本情况
-
-- 使用Netty实现网络传输；
-- 使用Netty心跳机制 : 保证客户端和服务端的连接不被断掉，避免重连。
-- 使用开源的序列化机制 Kyro替代 JDK 自带的序列化机制
-- 使用 Zookeeper 作为注册中心管理相关服务地址信息
-- 动态代理使用JDk自带的动态代理屏蔽远程方法调用的细节
-- 客户端调用远程服务的时候进行负载均衡为避免单个服务器响应同一请求，避免造成服务器宕机、崩溃等问题
-- 集成 Spring 通过注解注册服务和服务消费
-
-
-
-
+- Uses Netty for network transmission;
+- Implements Netty heartbeat mechanism: Ensures that the connection between the client and server is not interrupted, avoiding reconnections.
+- Utilizes the open-source serialization mechanism Kryo instead of the JDK's built-in serialization mechanism.
+- Employs Zookeeper as the registry center to manage service address information.
+- Uses the JDK's built-in dynamic proxy to shield the details of remote method invocation.
+- Implements load balancing when the client calls remote services to avoid a single server responding to the same request, preventing server crashes or breakdowns.
+- Integrates with Spring to register services and consume services through annotations.

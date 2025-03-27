@@ -66,11 +66,11 @@ public class SpringBeanPostProcessor implements BeanPostProcessor {
                 RpcClientProxy rpcClientProxy = new RpcClientProxy(rpcClient, rpcServiceConfig);
                 Object clientProxy = rpcClientProxy.getProxy(declaredField.getType());
                 declaredField.setAccessible(true);
-//                try {
-//                    declaredField.set(bean, clientProxy);
-//                } catch (IllegalAccessException e) {
-//                    e.printStackTrace();
-//                }
+                try {
+                    declaredField.set(bean, clientProxy);
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
             }
 
         }
