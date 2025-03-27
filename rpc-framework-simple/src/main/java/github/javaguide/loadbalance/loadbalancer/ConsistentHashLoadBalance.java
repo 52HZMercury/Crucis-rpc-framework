@@ -21,6 +21,11 @@ import java.util.concurrent.ConcurrentHashMap;
 public class ConsistentHashLoadBalance extends AbstractLoadBalance {
     private final ConcurrentHashMap<String, ConsistentHashSelector> selectors = new ConcurrentHashMap<>();
 
+    //
+    public String selectForKey(long hashCode) {
+        return null;
+    }
+
     @Override
     protected String doSelect(List<String> serviceAddresses, RpcRequest rpcRequest) {
         int identityHashCode = System.identityHashCode(serviceAddresses);

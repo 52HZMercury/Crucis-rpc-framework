@@ -17,6 +17,11 @@ public class GzipCompress implements Compress {
 
     private static final int BUFFER_SIZE = 1024 * 4;
 
+    //
+    public static final int GZIP_COMPRESS_TYPE = 2;
+
+
+
     //压缩
     @Override
     public byte[] compress(byte[] bytes) {
