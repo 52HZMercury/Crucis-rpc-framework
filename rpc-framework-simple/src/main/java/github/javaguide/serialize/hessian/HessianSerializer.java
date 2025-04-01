@@ -16,14 +16,6 @@ import java.io.ByteArrayOutputStream;
 public class HessianSerializer implements Serializer {
 
 
-    //
-    private static final byte[] PAD_BYTES = new byte[]{0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
-    private static final byte[] PAD_BYTES_2 = new byte[]{0x00, 0x00, 0x00, 0x00, 0x00, 0x00,}
-
-
-
-
-
     @Override
     public byte[] serialize(Object obj) {
         try (ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream()) {
