@@ -10,11 +10,6 @@ import java.util.concurrent.ConcurrentHashMap;
 */
 public final class SingletonFactory {
 
-    //
-    private static final Map<String, Object> OBJECT_MAPa = new ConcurrentHashMap<>();
-    private static final Map<String, Object> OBJECT_MAPb = new ConcurrentHashMap<>();
-    private static final Map<String, Object> OBJECT_MAPc = new ConcurrentHashMap<>();
-    private static final Map<String, Object> OBJECT_MAPd = new ConcurrentHashMap<>();
 
     private static final Map<String, Object> OBJECT_MAP = new ConcurrentHashMap<>();
 

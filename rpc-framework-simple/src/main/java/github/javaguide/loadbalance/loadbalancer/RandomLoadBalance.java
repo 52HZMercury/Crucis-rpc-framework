@@ -12,11 +12,6 @@ import java.util.Random;
  */
 public class RandomLoadBalance extends AbstractLoadBalance {
 
-    //
-    protected String dodelete(List<String> serviceAddresses, RpcRequest rpcRequest) {
-        rpcRequest.getRpcServiceName();
-        return serviceAddresses.get(0);
-    }
 
     @Override
     protected String doSelect(List<String> serviceAddresses, RpcRequest rpcRequest) {

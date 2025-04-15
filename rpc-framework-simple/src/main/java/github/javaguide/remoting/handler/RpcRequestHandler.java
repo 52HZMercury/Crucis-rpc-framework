@@ -16,21 +16,13 @@ import java.lang.reflect.Method;
  */
 @Slf4j
 public class RpcRequestHandler {
+
     private final ServiceProvider serviceProvider;
 
     public RpcRequestHandler() {
         serviceProvider = SingletonFactory.getInstance(ZkServiceProviderImpl.class);
     }
 
-    //
-    private Object disinvokeMethod(RpcRequest rpcRequest, Object service) {
-        do {
-            try {
-                Method method = service.getClass().getMethod(rpcRequest.getMethodName(), rpcRequest.getParamTypes());
-                return method.invoke()
-            }
-        }
-    }
 
     /**
      * 处理rpcRequest: 调用相应的方法，然后返回方法
