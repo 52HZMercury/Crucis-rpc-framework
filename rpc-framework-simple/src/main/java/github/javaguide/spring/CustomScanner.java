@@ -12,10 +12,7 @@ import java.lang.annotation.Annotation;
  */
 public class CustomScanner extends ClassPathBeanDefinitionScanner {
 
-    public CustomScanner(BeanDefinitionRegistry registry, Class<? extends Annotation> annoType) {
-        super(registry);
-        super.addIncludeFilter(new AnnotationTypeFilter(annoType));
-    }
+
 
     @Override
     public int scan(String... basePackages) {

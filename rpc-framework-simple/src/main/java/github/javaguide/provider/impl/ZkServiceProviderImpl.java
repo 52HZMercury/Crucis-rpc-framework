@@ -30,11 +30,11 @@ public class ZkServiceProviderImpl implements ServiceProvider {
     private final Set<String> registeredService;
     private final ServiceRegistry serviceRegistry;
 
-//    public ZkServiceProviderImpl() {
-//        serviceMap = new ConcurrentHashMap<>();
-//        registeredService = ConcurrentHashMap.newKeySet();
-//        serviceRegistry = ExtensionLoader.getExtensionLoader(ServiceRegistry.class).getExtension("zk");
-//    }
+    public ZkServiceProviderImpl() {
+        serviceMap = new ConcurrentHashMap<>();
+        registeredService = ConcurrentHashMap.newKeySet();
+        serviceRegistry = ExtensionLoader.getExtensionLoader(ServiceRegistry.class).getExtension("zk");
+    }
 
     @Override
     public void addService(RpcServiceConfig rpcServiceConfig) {

@@ -44,22 +44,22 @@ public final class CuratorUtils {
      *
      * @param path node path
      */
-//    public static void createPersistentNode(CuratorFramework zkClient, String path) {
-//        try {
-//            //zkClient.checkExists().forPath(path)检查节点是否创建成功
-//            if (REGISTERED_PATH_SET.contains(path) || zkClient.checkExists().forPath(path) != null) {
-//                log.info("此节点已存在. The node is:[{}]", path);
-//            } else {
-//                //eg: /my-rpc/github.javaguide.HelloService/127.0.0.1:9999
-//                //保证父节点不存在的时候自动创建父节点
-//                zkClient.create().creatingParentsIfNeeded().withMode(CreateMode.PERSISTENT).forPath(path);
-//                log.info("节点创建成功. The node is:[{}]", path);
-//            }
-//            REGISTERED_PATH_SET.add(path);
-//        } catch (Exception e) {
-//            log.error("为路径 [{}] 创建持久化节点失败", path);
-//        }
-//    }
+    public static void createPersistentNode(CuratorFramework zkClient, String path) {
+        try {
+            //zkClient.checkExists().forPath(path)检查节点是否创建成功
+            if (REGISTERED_PATH_SET.contains(path) || zkClient.checkExists().forPath(path) != null) {
+                log.info("此节点已存在. The node is:[{}]", path);
+            } else {
+                //eg: /my-rpc/github.javaguide.HelloService/127.0.0.1:9999
+                //保证父节点不存在的时候自动创建父节点
+                zkClient.create().creatingParentsIfNeeded().withMode(CreateMode.PERSISTENT).forPath(path);
+                log.info("节点创建成功. The node is:[{}]", path);
+            }
+            REGISTERED_PATH_SET.add(path);
+        } catch (Exception e) {
+            log.error("为路径 [{}] 创建持久化节点失败", path);
+        }
+    }
 
     /**
      * Gets the children under a node
