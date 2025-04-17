@@ -16,18 +16,7 @@ import java.io.ByteArrayOutputStream;
 public class HessianSerializer implements Serializer {
 
 
-    @Override
-    public byte[] serialize(Object obj) {
-        try (ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream()) {
-            HessianOutput hessianOutput = new HessianOutput(byteArrayOutputStream);
-            hessianOutput.writeObject(obj);
 
-            return byteArrayOutputStream.toByteArray();
-        } catch (Exception e) {
-            throw new SerializeException("Serialization failed");
-        }
-
-    }
 
     @Override
     public <T> T deserialize(byte[] bytes, Class<T> clazz) {
