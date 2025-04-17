@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Curator(zookeeper client) utils
- *
+ * zookeeper 客户端工具类
  */
 @Slf4j
 public final class CuratorUtils {
@@ -41,7 +41,7 @@ public final class CuratorUtils {
 
     /**
      * Create persistent nodes. Unlike temporary nodes, persistent nodes are not removed when the client disconnects
-     *
+     * 创建持久节点。与临时节点不同，持久节点在客户端断开连接后不会被移除。
      * @param path node path
      */
     public static void createPersistentNode(CuratorFramework zkClient, String path) {
@@ -64,8 +64,8 @@ public final class CuratorUtils {
     /**
      * Gets the children under a node
      * 获取子节点
-     * @param rpcServiceName rpc service name eg:github.javaguide.HelloServicetest2version1
-     * @return All child nodes under the specified node
+     * @param rpcServiceName rpc service name
+     * @return All child nodes under the specified node 获取指定节点下的所有子节点
      */
     public static List<String> getChildrenNodes(CuratorFramework zkClient, String rpcServiceName) {
         if (SERVICE_ADDRESS_MAP.containsKey(rpcServiceName)) {
