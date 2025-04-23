@@ -60,7 +60,30 @@ public class RpcClientProxy implements InvocationHandler {
      *
      * 代理对象是通过getProxy方法获得的对象。
      */
-
+    @SneakyThrows
+    @SuppressWarnings("unchecked")
+    @Override
+    public Object invoke(Object proxy, Method method, Object[] args) {
+        log.info("invoked method: [{}]", method.getName());
+        RpcRequest rpcRequest = RpcRequest.builder().methodName(method.getName())
+                .parameters(args)
+                .interfaceName(method.getDeclaringClass().getName())
+                .paramTypes(method.getParameterTypes())
+                .requestId(UUID.randomUUID().toString())
+                .group(rpcServiceConfig.getGroup())
+                .version(rpcServiceConfig.getVersion())
+                .build();
+        RpcResponse<Object> rpcResponse = null;
+        if (rpcRequestTransport instanceof NettyRpcClient) {
+            CompletableFuture<RpcResponse<Object>> completableFuture = (CompletableFuture<RpcResponse<Object>>) rpcRequestTransport.sendRpcRequest(rpcRequest);
+            rpcResponse = completableFuture.get();
+        }
+        if (rpcRequestTransport instanceof SocketRpcClient) {
+            rpcResponse = (RpcResponse<Object>) rpcRequestTransport.sendRpcRequest(rpcRequest);
+        }
+        this.check(rpcResponse, rpcRequest);
+        return rpcResponse.getData();
+    }
 
     private void check(RpcResponse<Object> rpcResponse, RpcRequest rpcRequest) {
         if (rpcResponse == null) {
